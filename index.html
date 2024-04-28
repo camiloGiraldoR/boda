@@ -9,10 +9,33 @@
 </head>
 <body>
     <div>
-        <audio controls autoplay="true" loop>
-            <source src="./audio/dbz.mp3">
-            <source src="./audio/dbz.ogg">
-        </video>
+        <audio id="dbz" controls autoplay loop>
+            <source src="audio/dbz.mp3">
+            <source src="audio/dbz.ogg">
+        </audio>
+        <button id="playButton">Reproducir Audio</button>
+        <script>
+            var audioElement = document.getElementById('dbz');
+            var playButton = document.getElementById('playButton');
+
+            // Verificar si el elemento de audio está disponible
+            if(audioElement && playButton) {
+                // Agregar un evento de clic al botón de reproducción
+                playButton.addEventListener('click', function() {
+                    // Reproducir el audio
+                    audioElement.play()
+                    .catch(function(error) {
+                        // Manejar cualquier error de reproducción
+                        console.error('Error al reproducir el audio:', error);
+                    });
+                });
+
+                playButton.click();
+            } else {
+                // Mostrar un mensaje de error si el elemento no se encuentra
+                console.error('El elemento de audio o el botón de reproducción no se encontró.');
+            }
+        </script>
     </div>
     
   <div id="root">
