@@ -8869,7 +8869,9 @@
                                     <script>
                                         function getParametro(nombre) {
                                             const parametros = new URLSearchParams(window.location.search);
-                                            return atob(parametros.get(nombre));
+                                            const id = parametros.get(nombre);
+
+                                            return id ? atob(parametros.get(nombre)) : null;
 
                                         }
                                     
